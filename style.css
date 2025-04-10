@@ -159,5 +159,5 @@
         padding: 5px 0;
         background: rgba(255, 255, 255, 0.7); /* Fundo semitransparente */
         transform: rotate(-1deg); /* Efeito "descolado" do Polaroid */
-        text-shadow: 0 1px 0 white; /* Melhora a legibilidade */
+        text-shadow: 0 1px 0 black; /* Melhora a legibilidade */
     }
