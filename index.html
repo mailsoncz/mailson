@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mailson & Graziela</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- (Crie um ícone em: https://favicon.io/) -->
+</head>
+
+<body>
+    <h1>Mailson & Graziela</h1>
+    <p>"Assim como os girassóis seguem o sol, meu coração sempre segue você."</p>
+
+    <div class="contador">
+        <p>O nosso novo pra sempre começa agora</p>
+        <p>Aceita ser a minha namorada, noiva e esposa?</p>
+        <span id="anos"></span> anos,
+        <span id="meses"></span> meses,
+        <span id="dias"></span> dias,
+        <span id="horas"></span> horas,
+        <span id="minutos"></span> minutos,
+        <span id="segundos"></span> segundos.
+    </div>
+
+    <!-- Novo carrossel com Swiper -->
+    <div class="swiper meu-carrossel">
+        <div class="swiper-wrapper">
+            <!-- Slides serão adicionados pelo JavaScript -->
+        </div>
+        <!-- Botões de navegação opcionais -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <iframe width="300" height="100" src="https://www.youtube.com/watch?v=y6aVFYDLnlE&list=RDy6aVFYDLnlE&start_radio=1"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>// Contador (mantido do seu código original)
+        const dataInicio = new Date("2025-04-06T17:00:00");
+
+        function atualizaContador() {
+            const agora = new Date();
+            const diferenca = dataInicio - agora;
+            const segundosTotais = Math.abs(Math.floor(diferenca / 1000)); // Usamos Math.abs() para sempre ter valor positivo
+
+            // Cálculos do tempo
+            const anos = Math.floor(segundosTotais / (365 * 24 * 60 * 60));
+            const restoAnos = segundosTotais % (365 * 24 * 60 * 60);
+
+            const meses = Math.floor(restoAnos / (30 * 24 * 60 * 60));
+            const restoMeses = restoAnos % (30 * 24 * 60 * 60);
+
+            const dias = Math.floor(restoMeses / (24 * 60 * 60));
+            const restoDias = restoMeses % (24 * 60 * 60);
+
+            const horas = Math.floor(restoDias / (60 * 60));
+            const restoHoras = restoDias % (60 * 60);
+
+            const minutos = Math.floor(restoHoras / 60);
+            const segundos = restoHoras % 60;
+
+            // Atualiza a tela
+            document.getElementById('anos').textContent = anos;
+            document.getElementById('meses').textContent = meses;
+            document.getElementById('dias').textContent = dias;
+            document.getElementById('horas').textContent = horas; // Corrigido para 'horas' (estava 'horas' antes)
+            document.getElementById('minutos').textContent = minutos;
+            document.getElementById('segundos').textContent = segundos;
+
+            // Opcional: Mostrar se está contando tempo passado ou futuro
+            if (diferenca < 0) {
+                document.getElementById('status').textContent = "Tempo passado desde:";
+            } else {
+                document.getElementById('status').textContent = "Tempo restante:";
+            }
+        }
+
+        // Inicia o contador
+        atualizaContador();
+        setInterval(atualizaContador, 1000);
+    </script>
+    <script>
+
+        // Configuração do novo carrossel
+        // Configuração do carrossel com efeito Polaroid
+        const fotos = [
+            { url: "https://lh3.googleusercontent.com/d/1bD--gpQPjVX49jOEz_oosPM6udEGnJOk=w1000", data: "01/01/2023" },
+            { url: "https://lh3.googleusercontent.com/d/19Z-938pHDwXz0urx4AOtfuXmllhwj09M=w1000", data: "15/02/2023" },
+            { url: "https://lh3.googleusercontent.com/d/1LOqhiL88p6FcrywThsfN-BXO677vHt17=w1000", data: "03/03/2023" },
+            { url: "https://lh3.googleusercontent.com/d/1QzmEnEZfcsvlRe4CCe5V03G3nTdvUu57=w1000", data: "20/04/2023" },
+            { url: "https://lh3.googleusercontent.com/d/1Le73mrheZzxQ8_pPGun6EBdOeQcHFPgg=w1000", data: "05/05/2023" },
+            { url: "https://lh3.googleusercontent.com/d/1JVayiAWJPu8NCX8fmhk6RZhry7Aws2NR=w1000", data: "12/06/2023" }
+        ];
+
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+
+        fotos.forEach((foto) => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+
+            const img = document.createElement('img');
+            img.src = foto.url;
+            img.alt = 'Foto do casal';
+
+            const texto = document.createElement('p');
+            texto.className = 'polaroid-text';
+            texto.textContent = foto.data;
+
+            slide.appendChild(img);
+            slide.appendChild(texto);
+            swiperWrapper.appendChild(slide);
+        });
+
+        // Inicializa o Swiper
+        // Inicializa o Swiper (VERSÃO MELHORADA - cole isso no lugar do trecho acima ↑)
+        const swiper = new Swiper('.meu-carrossel', {
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            grabCursor: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Novas configurações para melhor centralização:
+            watchSlidesProgress: true,      // Observa a posição dos slides
+            slideActiveClass: 'swiper-slide-active', // Mantém a classe ativa
+            slideVisibleClass: 'swiper-slide-visible', // Adiciona classe para slides visíveis
+            effect: 'creative',             // Efeito mais controlado (opcional)
+            creativeEffect: {
+                prev: {
+                    translate: ['-120%', 0, -500], // Ajuste conforme necessidade
+                },
+                next: {
+                    translate: ['120%', 0, -500],  // Ajuste conforme necessidade
+                },
+            },
+            breakpoints: {
+                768: {
+                    spaceBetween: 30
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

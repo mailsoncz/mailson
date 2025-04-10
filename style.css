@@ -1,0 +1,163 @@
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #FFDAB9;
+        color: #333;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #d48c00;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-style: italic;
+        margin-bottom: 20px;
+    }
+
+    .contador {
+        font-size: 18px;
+        margin: 20px 0 40px;
+    }
+
+    /* Estilos do carrossel - Versão melhorada */
+    .meu-carrossel {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        min-height: 400px;
+        /* Altura mínima */
+        margin: 0 auto 40px;
+        position: relative;
+    }
+
+    .swiper-slide {
+        width: 70%;
+        height: auto;
+        opacity: 0.6;
+        /* Mais visível */
+        transition: all 0.4s ease;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        /* Evita cortes */
+        background: white;
+        /* Fundo para transparência */
+
+        overflow: visible;
+        /* Permite que bordas e sombras vazem */
+        padding: 0;
+        /* Remove padding interno se houver */
+        margin: 0 5px;
+        /* Espaço entre slides (opcional) */
+
+    }
+
+    .swiper-slide-active {
+        opacity: 1;
+        transform: scale(1.03);
+        /* Efeito mais sutil */
+        z-index: 2;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .swiper-slide img {
+        /* Mantém suas propriedades atuais (não as remova) */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        aspect-ratio: 2/3;
+
+        /* Estilo Polaroid - TESTE ESTES VALORES */
+        background: white;
+        /* Fundo branco do Polaroid */
+        padding: 8px 8px 40px 8px;
+        /* Espaço inferior maior para "legenda" */
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 2px;
+        /* Canto reto, mas com leve arredondamento */
+        filter: sepia(10%) brightness(98%);
+        /* Toque vintage (opcional) */
+        border: 8px solid white; /* Borda grossa estilo Polaroid */
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box; /* Faz a borda contar no width/height */
+    }
+
+    /* Botões de navegação - Melhor visibilidade */
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #d48c00;
+        background: rgba(255, 255, 255, 0.8);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Responsividade melhorada */
+    @media (max-width: 768px) {
+        .meu-carrossel {
+            min-height: 350px;
+        }
+
+        .swiper-slide {
+            width: 80%;
+            opacity: 0.7;
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .meu-carrossel {
+            min-height: 300px;
+        }
+
+        .swiper-slide {
+            width: 85%;
+        }
+    }
+
+    /* Garante que o container mantém a centralização */
+    .swiper-wrapper {
+        display: flex;
+        align-items: center;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        /* Efeito mais suave */
+    }
+
+    /* Ajusta a posição dos slides não-ativos */
+    .swiper-slide:not(.swiper-slide-active) {
+        filter: brightness(0.8);
+        transform: scale(0.95);
+    }
+    .polaroid-text {
+        position: absolute;
+        bottom: 15px; /* Distância do texto até a base do slide */
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: 'Courier New', monospace; /* Fonte estilo Polaroid */
+        color: #555; /* Cor do texto */
+        font-size: 14px;
+        margin: 0;
+        padding: 5px 0;
+        background: rgba(255, 255, 255, 0.7); /* Fundo semitransparente */
+        transform: rotate(-1deg); /* Efeito "descolado" do Polaroid */
+        text-shadow: 0 1px 0 white; /* Melhora a legibilidade */
+    }
