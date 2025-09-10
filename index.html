@@ -1,187 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Para o meu amor</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartão de Visita - Mailson</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- QRCode.js -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .card {
+      max-width: 420px;
+      margin: auto;
+      margin-top: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: -60px;
+      border: 4px solid white;
+    }
+    .portfolio img {
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+    .portfolio img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Mailson & Graziela</h1>
-    <p>"Assim como os girassóis seguem o sol, meu coração sempre segue você.<br>Eu sei que não sou a pessoa que você almeja na vida,<br> 
-        porém, todos os dias eu me moldo por você, não porque você pediu ou outra coisa, mas o motivo é único: amar você.<br>
-        Tudo que eu quero é ficar com você, amar você e tê-la para todo o sempre ao meu lado."</p>
-    <p>Eu te amo, amor, e eu te peço, jamais duvide do meu amor.</p>
 
-    <div class="contador">
-        <p>Procurei algum lugar para descansar, e achei, quando te amei.</p>
-        <p>O nosso novo pra sempre começa agora.</p>
-        
-        <span id="anos"></span> anos,
-        <span id="meses"></span> meses,
-        <span id="dias"></span> dias,
-        <span id="horas"></span> horas,
-        <span id="minutos"></span> minutos,
-        <span id="segundos"></span> segundos.
+<!-- Cartão -->
+<div class="card text-center" data-aos="fade-down">
+  <div class="card-body">
+    <img src="https://lh3.googleusercontent.com/d/1xJDCSHGDhW4QSrmyPLOyc-7OD-eLxHe9=w1000" alt="Foto de perfil" class="profile-img">
+    <h3 class="mt-3">Mailson</h3>
+    <p class="text-muted">Designer • Social Media • Criação de Conteúdo</p>
+
+    <div class="d-grid gap-2 mt-4">
+      <a href="https://wa.me/5511937485299" target="_blank" class="btn btn-success">
+        <i class="fab fa-whatsapp"></i> Fale comigo no WhatsApp
+      </a>
+      <a href="https://instagram.com/SEUINSTAGRAM" target="_blank" class="btn btn-primary">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
     </div>
+  </div>
+</div>
 
-    <!-- Novo carrossel com Swiper -->
-    <div class="swiper meu-carrossel">
-        <div class="swiper-wrapper">
-            <!-- Slides serão adicionados pelo JavaScript -->
-        </div>
-        <!-- Botões de navegação opcionais -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
+<!-- Portfólio -->
+<div class="container mt-5 portfolio">
+  <h4 class="text-center mb-4" data-aos="fade-up">Meus Trabalhos</h4>
+  <div class="row g-3">
+    <div class="col-6" data-aos="zoom-in"><img src="trabalho1.jpg" class="img-fluid" alt="Trabalho 1"></div>
+    <div class="col-6" data-aos="zoom-in"><img src="trabalho2.jpg" class="img-fluid" alt="Trabalho 2"></div>
+    <div class="col-6" data-aos="zoom-in"><img src="trabalho3.jpg" class="img-fluid" alt="Trabalho 3"></div>
+    <div class="col-6" data-aos="zoom-in"><img src="trabalho4.jpg" class="img-fluid" alt="Trabalho 4"></div>
+  </div>
+</div>
 
-        <div style="width:300px;height:80px;overflow:hidden">
-        <iframe
-          width="300"
-          height="300"
-          src="https://www.youtube.com/embed/4118vSxbktc?controls=1"
-          style="margin-top:-100px"
-          frameborder="0"
-          allow="autoplay">
-        </iframe>
-      </div>
+<!-- QR Code -->
+<div class="container text-center mt-5 mb-5" data-aos="fade-up">
+  <h5>Escaneie para acessar meu cartão</h5>
+  <div id="qrcode" class="d-flex justify-content-center"></div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+<!-- Scripts -->
+<script>
+  // Gera QR Code com o link do cartão
+  new QRCode(document.getElementById("qrcode"), {
+    text: "https://seudominio.com", // Coloque o link final do seu cartão
+    width: 128,
+    height: 128
+  });
+</script>
 
-    <script>// Contador (mantido do seu código original)
-        const dataInicio = new Date("2024-12-08T22:00:00");
-
-        function atualizaContador() {
-            const agora = new Date();
-            const diferenca = dataInicio - agora;
-            const segundosTotais = Math.abs(Math.floor(diferenca / 1000)); // Usamos Math.abs() para sempre ter valor positivo
-
-            // Cálculos do tempo
-            const anos = Math.floor(segundosTotais / (365 * 24 * 60 * 60));
-            const restoAnos = segundosTotais % (365 * 24 * 60 * 60);
-
-            const meses = Math.floor(restoAnos / (30 * 24 * 60 * 60));
-            const restoMeses = restoAnos % (30 * 24 * 60 * 60);
-
-            const dias = Math.floor(restoMeses / (24 * 60 * 60));
-            const restoDias = restoMeses % (24 * 60 * 60);
-
-            const horas = Math.floor(restoDias / (60 * 60));
-            const restoHoras = restoDias % (60 * 60);
-
-            const minutos = Math.floor(restoHoras / 60);
-            const segundos = restoHoras % 60;
-
-            // Atualiza a tela
-            document.getElementById('anos').textContent = anos;
-            document.getElementById('meses').textContent = meses;
-            document.getElementById('dias').textContent = dias;
-            document.getElementById('horas').textContent = horas; // Corrigido para 'horas' (estava 'horas' antes)
-            document.getElementById('minutos').textContent = minutos;
-            document.getElementById('segundos').textContent = segundos;
-
-            // Opcional: Mostrar se está contando tempo passado ou futuro
-            if (diferenca < 0) {
-                document.getElementById('status').textContent = "Tempo passado desde:";
-            } else {
-                document.getElementById('status').textContent = "Tempo restante:";
-            }
-        }
-
-        // Inicia o contador
-        atualizaContador();
-        setInterval(atualizaContador, 1000);
-    </script>
-    <script>
-
-        // Configuração do novo carrossel
-        // Configuração do carrossel com efeito Polaroid
-        const fotos = [
-            { url: "https://lh3.googleusercontent.com/d/1bD--gpQPjVX49jOEz_oosPM6udEGnJOk=w1000", data: "Você é a razão do meu sorriso" },
-            { url: "https://lh3.googleusercontent.com/d/19Z-938pHDwXz0urx4AOtfuXmllhwj09M=w1000", data: "Você é o meu Porto Seguro" },
-            { url: "https://lh3.googleusercontent.com/d/1LOqhiL88p6FcrywThsfN-BXO677vHt17=w1000", data: "Com você, a felicidade é constante" },
-            { url: "https://lh3.googleusercontent.com/d/1QzmEnEZfcsvlRe4CCe5V03G3nTdvUu57=w1000", data: "Amar você é a melhor parte da minha vida" },
-            { url: "https://lh3.googleusercontent.com/d/1Le73mrheZzxQ8_pPGun6EBdOeQcHFPgg=w1000", data: "Eu já olhei para você, um milhão de formas, e eu te amei em cada uma delas" },
-            { url: "https://lh3.googleusercontent.com/d/1JVayiAWJPu8NCX8fmhk6RZhry7Aws2NR=w1000", data: "Com você, o mundo fica mais bonito" },
-            { url: "https://lh3.googleusercontent.com/d/1-kSM2R4IGQC94WQmDIbndoUQeo8HZD3-=w1000", data: "Ao seu lado, tudo é mais colorido" },
-            { url: "https://lh3.googleusercontent.com/d/1-e35HbHxH_0QpRxwZwhIrosOlEzgguGB=w1000", data: "O meu amor é seu" },
-            { url: "https://lh3.googleusercontent.com/d/1zr-AT7SDavhvsurRl6t9Wvy1ZPA5Xs0c=w1000", data: "Seu sorriso é a minha canção favorita" },
-            { url: "https://lh3.googleusercontent.com/d/18YhAN2mv4bfUROYejCBEv9EOiV1zDApJ=w1000", data: "Com você, encontrei meu lar." },
-            { url: "https://lh3.googleusercontent.com/d/1ASXgn3_DNPISXO_boaVpJ9CLf5HHPo9s=w1000", data: "Você é a inspiração por trás dos meus sorrisos" },
-            { url: "https://lh3.googleusercontent.com/d/1-oey_JzoHXXh0j-TxBBXssRiSHVvRU6K=w1000", data: "Ninguem mais feliz que eu e você ❤️"},
-            { url: "https://lh3.googleusercontent.com/d/1-oL-JN5qq4-sIbLRwztv7lFbDD9bpy2g=w1000", data: "O seu sorriso me abraça e renova minha paz." },
-            { url: "https://lh3.googleusercontent.com/d/1-uXYHqsJEk2TmtxyWe4qWZXdG-4HSQT9=w1000", data: "Qualquer momento com você, ate o mais simples, é felicidade! 🍨"},
-            { url: "https://lh3.googleusercontent.com/d/100zcWisJm1m5veUHBPL9Gy1yka2gWUeV=w1000", data: "E se um dia eu te encontrar... e sermos o casal perfeito. 👨🏻‍👩🏻‍👧🏻‍👦🏻"},
-            { url: "https://lh3.googleusercontent.com/d/1LVW75XANeCpoPnH6IhnhUz1Em2vJzkHJ=w1000", data: "" },
-            { url: "https://lh3.googleusercontent.com/d/1XCT61tr7YtEnQIfkaS8btdE5iGmNaoQN=w1000", data: "" },
-            { url: "https://lh3.googleusercontent.com/d/1xX0TobyKijMFaL9nJqiLIybyJxG5XKAC=w1000", data: "" },          
-            ];
-
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-        fotos.forEach((foto) => {
-            const slide = document.createElement('div');
-            slide.className = 'swiper-slide';
-
-            const img = document.createElement('img');
-            img.src = foto.url;
-            img.alt = 'Foto do casal';
-
-            const texto = document.createElement('p');
-            texto.className = 'polaroid-text';
-            texto.textContent = foto.data;
-
-            slide.appendChild(img);
-            slide.appendChild(texto);
-            swiperWrapper.appendChild(slide);
-        });
-
-        // Inicializa o Swiper
-        // Inicializa o Swiper (VERSÃO MELHORADA - cole isso no lugar do trecho acima ↑)
-        const swiper = new Swiper('.meu-carrossel', {
-            loop: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            grabCursor: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Novas configurações para melhor centralização:
-            watchSlidesProgress: true,      // Observa a posição dos slides
-            slideActiveClass: 'swiper-slide-active', // Mantém a classe ativa
-            slideVisibleClass: 'swiper-slide-visible', // Adiciona classe para slides visíveis
-            effect: 'creative',             // Efeito mais controlado (opcional)
-            creativeEffect: {
-                prev: {
-                    translate: ['-120%', 0, -500], // Ajuste conforme necessidade
-                },
-                next: {
-                    translate: ['120%', 0, -500],  // Ajuste conforme necessidade
-                },
-            },
-            breakpoints: {
-                768: {
-                    spaceBetween: 30
-                }
-            }
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script>
 </body>
-
 </html>
-
-
-
